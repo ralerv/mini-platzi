@@ -6,8 +6,21 @@ export default class Course {
       teacher,
     }){
       this.id = id;
-      this.name = name;
+      this._name = name;
       this.classes = classes;
       this.teacher = teacher;
     };
+
+    get name() {
+      return this._name;
+    }
+  
+    set name(nuevoNombrecito) {
+      if (nuevoNombrecito === "Curso Malito de Programación Básica") {
+        console.error("NooN");
+      } else {
+        this._name = nuevoNombrecito; 
+      }
+    }
+
   }
