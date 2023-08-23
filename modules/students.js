@@ -1,4 +1,4 @@
-export default class Student {
+class Student {
     constructor({
       id,
       name,
@@ -25,3 +25,40 @@ export default class Student {
       };
     }
   };
+
+class FreeStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+  approveCourse(newCourse){
+    if(newCourse.isFree){
+      this.approvedCourses.push(newCourse)
+    } else{
+      console.log(`Lo siento ${this.name}, no puedes tomar este curso`)
+    }
+  }
+}
+
+class BasicStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+  approveCourse(newCourse){
+    if(newCourse.lang !== "english"){
+      this.approvedCourses.push(newCourse)
+    } else{
+      console.log(`Lo siento ${this.name}, no puedes tomar este curso`)
+    }
+  }
+}
+
+class ExpertStudent extends Student {
+  constructor(props) {
+    super(props);
+  }
+  approveCourse(newCourse){
+    this.approvedCourses.push(newCourse)
+    }
+}
+
+export {Student,FreeStudent,BasicStudent,ExpertStudent}
