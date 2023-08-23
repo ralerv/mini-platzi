@@ -1,3 +1,5 @@
+import Comment from'./comments.js';
+
 class Student {
     constructor({
       id,
@@ -23,6 +25,13 @@ class Student {
         instagram,
         facebook,
       };
+    }
+    publicarComentario(commentContent){
+      const comment = new Comment({
+        content: commentContent,
+        studentName: this.name,
+      });
+      comment.publicar();
     }
   };
 
@@ -61,4 +70,22 @@ class ExpertStudent extends Student {
     }
 }
 
-export {Student,FreeStudent,BasicStudent,ExpertStudent}
+class TeacherStudent extends ExpertStudent {
+  constructor(props) {
+    super(props);
+  }
+  approveCourse(newCourse){
+    this.approvedCourses.push(newCourse)
+    }
+
+    publicarComentario(commentContent){
+      const comment = new Comment({
+        content: commentContent,
+        studentName: this.name,
+        studentRole: "profesor"
+      });
+      comment.publicar();
+    }
+}
+
+export {Student,FreeStudent,BasicStudent,ExpertStudent,TeacherStudent}
